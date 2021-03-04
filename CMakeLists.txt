@@ -14,6 +14,9 @@ endif()
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Threads)
 
+message("BOOST: ${Boost_LIBRARY_DIRS}")
+message("BOOST: ${Boost_INCLUDE_DIRS}")
+
 add_library(${PROJECT_NAME}
   src/comm.cpp
   src/udp.cpp
