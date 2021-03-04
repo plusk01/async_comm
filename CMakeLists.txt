@@ -5,13 +5,14 @@ if (NOT DEFINED CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif (NOT DEFINED CMAKE_BUILD_TYPE)
 
-set(Boost_USE_STATIC_LIBS ON)
-set(BOOST_ROOT "/home/plusk01/dev/boost/boost_1_65_1/stage")
+option(BUILD_SHARED_LIBS "Build shared library" ON)
+
+if(NOT BUILD_SHARED_LIBS)
+  set(Boost_USE_STATIC_LIBS ON)
+endif()
 
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Threads)
-
-option(BUILD_SHARED_LIBS "Build shared library" ON)
 
 add_library(${PROJECT_NAME}
   src/comm.cpp
